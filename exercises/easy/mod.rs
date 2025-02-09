@@ -4,3 +4,4 @@ mod algorithm2;
 mod algorithm3;
 mod algorithm4;
 mod algorithm5;
+mod algorithm6;
