@@ -64,34 +64,37 @@ impl<T> LinkedList<T> {
             },
         }
     }
-    pub fn merge(mut list_a: LinkedList<T>, mut list_b: LinkedList<T>) -> Self
+    pub fn merge(list_a: LinkedList<T>, list_b: LinkedList<T>) -> Self
     where
+        // 限定只有这样的才能加入进来
         T: PartialOrd + Clone,
     {
         // 存储需要进行merge的序列
         let mut list_merge = LinkedList::<T>::new();
-        let mut a_index = 0;
-        let mut b_index = 0;
-        while a_index < list_a.length && b_index < list_b.length {
-            let node_a = list_a.get(a_index as i32).unwrap();
-            let node_b = list_b.get(b_index as i32).unwrap();
-            if node_a <= node_b {
-                list_merge.add(node_a.to_owned());
-                a_index += 1;
+        let mut pointer_a = list_a.start;
+        let mut pointer_b = list_b.start;
+        while let (Some(node_a), Some(node_b)) = (pointer_a, pointer_b) {
+            let node_a_value = unsafe { node_a.as_ref() };
+            let node_b_value = unsafe { node_b.as_ref() };
+            if node_a_value.val <= node_b_value.val {
+                list_merge.add(node_a_value.val.clone());
+                pointer_a = unsafe { (*node_a.as_ptr()).next };
             } else {
-                list_merge.add(node_b.to_owned());
-                b_index += 1;
+                list_merge.add(node_b_value.val.clone());
+                pointer_b = unsafe { (*node_b.as_ptr()).next };
             }
         }
-        if a_index < list_a.length {
-            for i in a_index..list_a.length {
-                list_merge.add(list_a.get(i as i32).unwrap().to_owned());
-            }
+        let mut remain_pointer;
+        // a还不是null 那就都加进去
+        if pointer_a.is_some() {
+            remain_pointer = pointer_a;
+        } else {
+            remain_pointer = pointer_b;
         }
-        if b_index < list_b.length {
-            for i in b_index..list_b.length {
-                list_merge.add(list_b.get(i as i32).unwrap().to_owned());
-            }
+        while let Some(pointer) = remain_pointer {
+            let value = unsafe { pointer.as_ref() };
+            list_merge.add(value.val.clone());
+            remain_pointer = unsafe { (*pointer.as_ptr()).next }
         }
         list_merge
     }
