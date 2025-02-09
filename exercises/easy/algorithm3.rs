@@ -4,8 +4,12 @@
     you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
 
-///bubble sorting
+/// quick sorting
 fn sort<T: PartialOrd + Clone>(array: &mut [T]) {
+    bubble_sort(array);
+}
+///bubble sorting 完成已提交
+fn bubble_sort<T: PartialOrd + Clone>(array: &mut [T]) {
     for i in 0..array.len() - 1 {
         for j in i + 1..array.len() {
             if array[i] > array[j] {
@@ -14,6 +18,14 @@ fn sort<T: PartialOrd + Clone>(array: &mut [T]) {
                 array[j] = temp;
             }
         }
+    }
+}
+/// quick 快排
+fn quick_sort<T: PartialOrd + Clone>(array: &mut [T]) {
+    let (left, right) = (0, array.len() - 1);
+    while left < right {
+        let mid = left + (right - left) / 2;
+        if array[left] > array[mid] {}
     }
 }
 #[cfg(test)]
