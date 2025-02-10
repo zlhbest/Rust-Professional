@@ -101,7 +101,7 @@ where
     type Item = T;
     /// 取数据的时候就下滤， 最顶上的拿走以后，将最后面的移到最上面，然后开始向下走，子节点最小的与root交换
     fn next(&mut self) -> Option<T> {
-        let mut result;
+        let result;
         // 弹出第一个
         if self.count == 0 {
             result = None;
