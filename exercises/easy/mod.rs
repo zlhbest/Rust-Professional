@@ -2,6 +2,7 @@ mod algorithm1;
 mod algorithm10;
 mod algorithm11;
 mod algorithm12;
+mod algorithm13;
 mod algorithm2;
 /// 尝试使用其他排序完成
 mod algorithm3;
