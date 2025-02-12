@@ -9,6 +9,7 @@ mod algorithm15;
 mod algorithm16;
 mod algorithm17;
 mod algorithm18;
+mod algorithm19;
 mod algorithm2;
 /// 尝试使用其他排序完成
 mod algorithm3;
