@@ -61,9 +61,10 @@ fn fib_matrix(n: i32) -> i32 {
     // 得出 fn  fn-1
     result.0[0][0]
 }
-// 进行降幂乘 logn的时间复杂度
+// 进行降幂乘 logn的时间复杂度  这一步是精髓
 fn matrix_power(mut matrix: Matrix, mut n: i32) -> Matrix {
     let mut result = Matrix(vec![vec![1, 0], vec![0, 1]]);
+    //每一次都乘但是只有等于1 的时候才加上去
     while n > 0 {
         if n % 2 == 1 {
             result = result * matrix.clone();
