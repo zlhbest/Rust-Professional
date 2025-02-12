@@ -9,11 +9,28 @@
     Hint: You can solve this problem using sorting, hash sets, or the two-pointer technique.
 */
 
-use std::fmt::{self, Display, Formatter};
-
-pub fn intersection(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
+pub fn intersection(mut nums1: Vec<i32>, mut nums2: Vec<i32>) -> Vec<i32> {
     // TODO: Implement the logic to find the intersection of two arrays
-    Vec::new() // Placeholder return value
+    let mut result = Vec::new(); // Placeholder return value;
+    nums1.sort();
+    nums2.sort();
+    let (mut point_1, mut point_2) = (0, 0);
+    while point_1 < nums1.len() && point_2 < nums2.len() {
+        if nums1[point_1] == nums2[point_2] {
+            if !result.contains(&nums1[point_1]) {
+                result.push(nums1[point_1]);
+            }
+            point_1 += 1;
+            point_2 = 1;
+        } else {
+            if nums1[point_1] > nums2[point_2] {
+                point_2 += 1;
+            } else {
+                point_1 += 1;
+            }
+        }
+    }
+    result
 }
 
 #[cfg(test)]
@@ -22,8 +39,8 @@ mod tests {
 
     #[test]
     fn test_intersection_1() {
-        let nums1 = vec![1, 2, 2, 1];
-        let nums2 = vec![2, 2];
+        let nums1 = vec![1, 2, 2, 1]; // 1 1 2 2
+        let nums2 = vec![2, 2]; //  2 2
         let result = intersection(nums1, nums2);
         println!("Intersection: {:?}", result);
         assert_eq!(result, vec![2]);

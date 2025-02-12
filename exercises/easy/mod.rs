@@ -5,7 +5,9 @@ mod algorithm12;
 mod algorithm13;
 mod algorithm14;
 mod algorithm15;
+// 解法很蠢，等看看有没有啥好办法
 mod algorithm16;
+mod algorithm17;
 mod algorithm2;
 /// 尝试使用其他排序完成
 mod algorithm3;
