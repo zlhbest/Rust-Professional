@@ -657,6 +657,9 @@ dependencies = [
 [[package]]
 name = "solutiont4"
 version = "0.1.0"
+dependencies = [
+ "time_utils",
+]
 
 [[package]]
 name = "solutiont5"
@@ -724,6 +727,13 @@ checksum = "cfe8f25bbdd100db7e1d34acf7fd2dc59c4bf8f7483f505eaa7d4f12f76cc0ea"
 dependencies = [
  "libc",
  "winapi",
+]
+
+[[package]]
+name = "time_utils"
+version = "0.1.0"
+dependencies = [
+ "lazy_static",
 ]
 
 [[package]]

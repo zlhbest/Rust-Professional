@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-
+time_utils = { version = "0.1.0", path = "../../libs/time_utils" }
 [[test]]
 name = "tests"
 path = "src/tests.rs"

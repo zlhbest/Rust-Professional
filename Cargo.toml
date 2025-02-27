@@ -7,7 +7,12 @@ edition = "2021"
 path = "exercises/lib.rs"
 
 [workspace]
-members = ["exercises/hard/*", "exercises/normal/*", "."]
+members = [
+    "exercises/hard/*",
+    "exercises/normal/*",
+    ".",
+    "exercises/libs/time_utils",
+]
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
